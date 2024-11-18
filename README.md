@@ -14,9 +14,9 @@ Lista de contatos para a avaliação do pratique do módulo 32 do curso de Desen
 2. Usar o Redux para gestão dos dados.
 3. Utilizar o Styled Components para estilização.
 4. Os contatos deverão conter as informações:
-   - nome completo;
-   - e-mail;
-   - telefone;
+  - nome completo;
+  - e-mail;
+  - telefone;
 5. Incluir as funcionalidades:
   - adição;
   - remoção;
