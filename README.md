@@ -10,21 +10,26 @@ Lista de contatos para a avaliação do pratique do módulo 32 do curso de Desen
 
 ## Objetivos
 
-- Crie um projeto utilizando ReactJS;
-- Este projeto será basicamente um formulário, contendo os campos:
-  - altura
-  - peso
-- A partir dessas informações calcule o IMC;
-- Retorne o IMC e a classificação na tabela;
-- Em um novo repositório armazene o código da tarefa;
-- Envie o link do repositório através da plataforma.
+1. Criar uma lista de contatos utilizando o React.
+2. Usar o Redux para gestão dos dados.
+3. Utilizar o Styled Components para estilização.
+4. Os contatos deverão conter as informações:
+   - nome completo;
+   - e-mail;
+   - telefone;
+5. Incluir as funcionalidades:
+  - adição;
+  - remoção;
+  - edição dos itens da lista de contatos.
+6. Criar um novo repositório no Github para armazenar o projeto.
+7. Subir o conteúdo neste repositório e enviar o link.
 
 ## Tecnologias
 
-- JavaScript ES6+
 - Typescript
 - ReactJS
-- TailwindCSS
+- Styled Components
+- Redux / Redux ToolKit
+- React Router
 - Vite
 - NodeJS
-- WebStorm IDE (Text Editor)
