@@ -8,16 +8,20 @@ type Props = {
 export const FiltroStyle = styled.div<Props>`
 	width: 100%;
 	margin-bottom: 24px;
+	padding: 36px 12px;
 	font-size: 18px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
+	background-color: #0003;
+	position: ${(props) => (props.fromMain ? "static" : "sticky")};
+	top: 0px;
+	z-index: 2;
 
 	label {
-		margin-bottom: 12px;
+		margin-bottom: 8px;
 	}
-
 	input {
 		width: 100%;
 		padding: 6px 8px;

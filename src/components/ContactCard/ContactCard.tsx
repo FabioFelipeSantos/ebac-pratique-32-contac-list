@@ -1,47 +1,66 @@
 import { Contact } from "../../store/reducers/contactListSlice";
-import { MailPlus, Phone, StarIcon } from "lucide-react";
+import { MailPlus, PenBox, Phone, StarIcon, Trash2 } from "lucide-react";
 import Social from "../Social/Social";
-import { CardHeader, CardStyle } from "./styles";
+import {
+	AvatarStyle,
+	CardContatoInfo,
+	CardHeader,
+	CardStyle,
+	InfoStyle,
+	TituloNomeCard,
+	InfoContainerStyle,
+	SocialContainerStyle,
+	SocialListStyle,
+	BotoesEspeciaisContainer,
+} from "./styles";
 
 export default function ContactCard({ color, avatar, fullName, phone, email, socials }: Contact) {
 	return (
 		<CardStyle>
 			<CardHeader color={color}>
 				<span>
-					<StarIcon size={32} />
+					<StarIcon
+						size={32}
+						color="hsl(45, 100%, 50%)"
+						fill="hsl(45, 100%, 50%)"
+					/>
 				</span>
 			</CardHeader>
 
-			<div>
+			<AvatarStyle>
 				<img src={avatar} />
-			</div>
+			</AvatarStyle>
 
-			<h2>{fullName}</h2>
+			<CardContatoInfo>
+				<BotoesEspeciaisContainer>
+					<Trash2 size={22} />
+					<PenBox size={22} />
+				</BotoesEspeciaisContainer>
 
-			<div>
-				<div>
-					<Phone />
-				</div>
-				<div>
-					<h3>Número de Telefone</h3>
-					<h2>{phone}</h2>
-				</div>
-			</div>
+				<TituloNomeCard>{fullName}</TituloNomeCard>
 
-			<div>
-				<div>
-					<MailPlus />
-				</div>
-				<div>
-					<h3>E-mail</h3>
-					<h2>{email}</h2>
-				</div>
-			</div>
+				<InfoContainerStyle>
+					<Phone size={44} />
+
+					<InfoStyle>
+						<h3>Número de Telefone</h3>
+						<h2>{phone}</h2>
+					</InfoStyle>
+				</InfoContainerStyle>
+
+				<InfoContainerStyle>
+					<MailPlus size={44} />
+					<InfoStyle>
+						<h3>E-mail</h3>
+						<h2>{email}</h2>
+					</InfoStyle>
+				</InfoContainerStyle>
+			</CardContatoInfo>
 
 			{socials && (
-				<div>
+				<SocialContainerStyle>
 					<h3>Redes Sociais</h3>
-					<ul>
+					<SocialListStyle>
 						{Object.entries(socials).map((social) => (
 							<li key={social[1]}>
 								<Social
@@ -50,8 +69,8 @@ export default function ContactCard({ color, avatar, fullName, phone, email, soc
 								/>
 							</li>
 						))}
-					</ul>
-				</div>
+					</SocialListStyle>
+				</SocialContainerStyle>
 			)}
 		</CardStyle>
 	);

@@ -6,28 +6,29 @@ import {
 	SiX,
 	SiXHex,
 } from "@icons-pack/react-simple-icons";
+import { SocialItemContainer } from "./style";
 
 export default function Social({ social, link }: { social: string; link: string }) {
 	if (social === "facebook") {
 		return (
-			<div>
+			<SocialItemContainer>
 				<SiFacebook color={SiFacebookHex} />
 				<h4>{link}</h4>
-			</div>
+			</SocialItemContainer>
 		);
 	} else if (social === "instagram") {
 		return (
-			<div>
+			<SocialItemContainer>
 				<SiInstagram color={SiInstagramHex} />
 				<h4>{link}</h4>
-			</div>
+			</SocialItemContainer>
 		);
 	} else {
 		return (
-			<div>
+			<SocialItemContainer>
 				<SiX color={SiXHex} />
 				<h4>{link}</h4>
-			</div>
+			</SocialItemContainer>
 		);
 	}
 }

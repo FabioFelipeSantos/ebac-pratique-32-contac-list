@@ -1,12 +1,15 @@
 import BarraLateral from "../../containers/BarraLateral/BarraLateral";
 import ListaDeContatos from "../../containers/ListaDeContatos/ListaDeContatos";
-import { MainPageStyle } from "./styles";
+import { ListaDeContatosContainerStyle, MainPageStyle } from "./styles";
 
 export default function MainPage() {
 	return (
 		<MainPageStyle>
 			<BarraLateral />
-			<ListaDeContatos />
+
+			<ListaDeContatosContainerStyle>
+				<ListaDeContatos />
+			</ListaDeContatosContainerStyle>
 		</MainPageStyle>
 	);
 }

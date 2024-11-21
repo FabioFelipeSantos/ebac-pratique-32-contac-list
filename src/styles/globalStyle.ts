@@ -9,6 +9,10 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Host Grotesk", sans-serif;
         list-style: none;
     }
+
+    body {
+        min-height: 100vh;
+    }
 `;
 
 export const Container = styled.div`

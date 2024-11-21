@@ -1,13 +1,17 @@
 import styled from "styled-components";
-import { breakPoints, colors } from "../../utils/variables";
+import { breakPoints, colors, variables } from "../../utils/variables";
 
 export const BarraLateralStyle = styled.div`
-	padding: 32px 16px 64px;
+	padding: 0px 0 24px;
 	background-color: ${colors.bgSecondColor};
-	height: 100vh;
+	height: calc(100vh - ${variables.footerHeight});
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 	display: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 
 	@media screen and (min-width: ${breakPoints.md}) {
 		display: block;

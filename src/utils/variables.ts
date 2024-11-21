@@ -1,5 +1,6 @@
 export const variables = {
-	imageSize: 200,
+	imageSize: 600,
+	footerHeight: "120px",
 };
 
 export const colors = {

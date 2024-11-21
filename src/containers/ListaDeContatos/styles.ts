@@ -5,13 +5,6 @@ import { Titulo } from "../../styles/globalStyle";
 export const ListaDeContatosStyle = styled.div`
 	width: 100%;
 	background-color: ${colors.bgMainColor};
-
-	overflow-y: scroll;
-	scroll-behavior: smooth;
-
-	&::-webkit-scrollbar {
-		display: none;
-	}
 `;
 
 export const TituloContatos = styled(Titulo)`
