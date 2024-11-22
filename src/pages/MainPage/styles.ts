@@ -10,7 +10,7 @@ export const MainPageStyle = styled(Container)`
 
 	@media screen and (min-width: ${breakPoints.lg}) {
 		display: grid;
-		grid-template-columns: 25vw auto;
+		grid-template-columns: 18vw auto;
 	}
 `;
 
@@ -20,7 +20,7 @@ export const ListaDeContatosContainerStyle = styled.div`
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 
-	&::-webkit-scrollbar {
+	/* &::-webkit-scrollbar {
 		display: none;
-	}
+	} */
 `;

@@ -13,8 +13,9 @@ import {
 	SocialListStyle,
 	BotoesEspeciaisContainer,
 } from "./styles";
+import { Link } from "react-router-dom";
 
-export default function ContactCard({ color, avatar, fullName, phone, email, socials }: Contact) {
+export default function ContactCard({ id, color, avatar, fullName, phone, email, socials }: Contact) {
 	return (
 		<CardStyle>
 			<CardHeader color={color}>
@@ -34,7 +35,9 @@ export default function ContactCard({ color, avatar, fullName, phone, email, soc
 			<CardContatoInfo>
 				<BotoesEspeciaisContainer>
 					<Trash2 size={22} />
-					<PenBox size={22} />
+					<Link to={`/editar/${id}`}>
+						<PenBox size={22} />
+					</Link>
 				</BotoesEspeciaisContainer>
 
 				<TituloNomeCard>{fullName}</TituloNomeCard>

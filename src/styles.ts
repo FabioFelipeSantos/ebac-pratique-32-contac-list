@@ -23,6 +23,7 @@ export const DataContainerStyle = styled.div`
 `;
 
 export const FooterDireitosStyle = styled.div`
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -37,4 +38,15 @@ export const FooterDireitosStyle = styled.div`
 			font-size: 16px;
 		}
 	}
+`;
+
+export const SocialFooterContainerStyle = styled.div`
+	width: 100%;
+	border-top: 1px solid #0004;
+	padding-top: 8px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
 `;

@@ -8,10 +8,12 @@ export const colors = {
 	bgSecondColor: "hsl(0, 100%, 20%, 0.03)",
 	bgTertiaryColor: "hsl(240, 95%, 50%, 0.05)",
 	buttonSelect: "hsl(45, 100%, 70%, 0.8)",
+	buttonAdd: "hsl(140, 70%, 85%)",
 };
 
 export const breakPoints = {
 	sm: "480px",
 	md: "640px",
 	lg: "780px",
+	xl: "920px",
 };

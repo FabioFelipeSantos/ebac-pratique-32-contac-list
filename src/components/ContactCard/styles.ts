@@ -7,9 +7,10 @@ type CardProps = {
 };
 
 export const CardStyle = styled.div`
+	max-width: 600px;
 	width: 100%;
 	display: flex;
-	margin: 32px 0;
+	margin: 32px auto;
 	box-shadow: 0 5px 12px -8px #000;
 	flex-direction: column;
 	align-items: center;
@@ -55,6 +56,11 @@ export const CardHeader = styled.div<CardProps>`
 			stroke: hsl(45, 100%, 65%);
 			fill: hsl(45, 100%, 65%);
 			transform: scale(1.1);
+		}
+
+		.lucide-star:active {
+			transform: scale(1.15);
+			filter: brightness(120%);
 		}
 	}
 `;
@@ -226,3 +232,23 @@ export const SocialListStyle = styled.ul`
 	justify-content: space-around;
 	flex-wrap: wrap;
 `;
+
+/*
+a a a a a a a a a a a a a
+
+a a a a
+  a a a a
+    a a a a
+      a a a a
+        a a a a
+          a a a a
+            a a a a
+              a a a a
+                a a a a
+                  a a a a
+
+(1 - 0)^2 + (3 - 1)^2 + (2 - 3)^2 + (9 - 2)^2
+1 + 4 + 1 + 49
+55
+sqrt(55)
+*/
