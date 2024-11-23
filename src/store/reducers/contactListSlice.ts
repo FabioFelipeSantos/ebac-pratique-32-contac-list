@@ -17,7 +17,7 @@ export interface Contact {
 }
 
 export const fetchContacts = createAppAsyncThunk("contacts/fetchContacts", async () => {
-	const response = await createFakePerson(10);
+	const response = await createFakePerson(26);
 	return response;
 });
 
