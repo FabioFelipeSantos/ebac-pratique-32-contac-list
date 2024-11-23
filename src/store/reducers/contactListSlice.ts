@@ -115,7 +115,6 @@ function excludingOnlyOneSelector(actualContactState: ContactListState, idModifi
 	if (!temMaisDeUmaLetraParaOSeletor) {
 		return actualContactState.seletoresDisponiveis.filter((seletor) => seletor !== letraInicial);
 	} else {
-		console.log("Seletores sem filtrar", actualContactState.seletoresDisponiveis);
 		return actualContactState.seletoresDisponiveis;
 	}
 }
