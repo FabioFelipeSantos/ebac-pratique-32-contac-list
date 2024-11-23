@@ -124,15 +124,35 @@ export const FiltroESeletorContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 
+	@media screen and (min-width: ${breakPoints.md}) {
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+`;
+
+export const SelectContainer = styled.label`
+	margin-left: 16px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+
+	p {
+		font-size: 16px;
+		margin-bottom: 8px;
+	}
+
 	select {
-		margin-left: 16px;
 		padding: 12px 24px;
 		font-size: 16px;
 	}
 
 	@media screen and (min-width: ${breakPoints.md}) {
-		flex-direction: row;
-		justify-content: space-around;
+		p {
+			font-size: 18px;
+			margin-top: -28px;
+		}
 
 		select {
 			font-size: 18px;

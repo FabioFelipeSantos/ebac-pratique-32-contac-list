@@ -4,12 +4,11 @@ type Props = {
 	label: string;
 	filtroDigitado: string;
 	handleChangingFiltro: (novoFiltro: string) => void;
-	fromMain?: boolean;
 };
 
-export default function Filtro({ label, filtroDigitado, handleChangingFiltro, fromMain = false }: Props) {
+export default function Filtro({ label, filtroDigitado, handleChangingFiltro }: Props) {
 	return (
-		<FiltroStyle fromMain={fromMain}>
+		<FiltroStyle>
 			<label htmlFor="nome">{label}</label>
 			<input
 				id="nome"

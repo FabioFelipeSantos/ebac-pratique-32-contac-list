@@ -1,5 +1,5 @@
 import { Contact, removerContato } from "../../store/reducers/contactListSlice";
-import { MailPlus, PenBox, Phone, StarIcon, Trash2 } from "lucide-react";
+import { MailPlus, PenBox, Phone, Trash2 } from "lucide-react";
 import Social from "../Social/Social";
 import {
 	AvatarStyle,
@@ -33,15 +33,7 @@ export default function ContactCard({ id, color, avatar, fullName, phone, email,
 
 	return (
 		<CardStyle>
-			<CardHeader color={color}>
-				<span>
-					<StarIcon
-						size={32}
-						color="hsl(45, 100%, 50%)"
-						fill="hsl(45, 100%, 50%)"
-					/>
-				</span>
-			</CardHeader>
+			<CardHeader color={color}></CardHeader>
 
 			<AvatarStyle>
 				<img src={avatar} />
@@ -50,11 +42,11 @@ export default function ContactCard({ id, color, avatar, fullName, phone, email,
 			<CardContatoInfo>
 				<BotoesEspeciaisContainer>
 					<Trash2
-						size={22}
+						size={28}
 						onClick={() => dispatch(removerContato(id))}
 					/>
 					<Link to={`/editar/${id}`}>
-						<PenBox size={22} />
+						<PenBox size={28} />
 					</Link>
 				</BotoesEspeciaisContainer>
 

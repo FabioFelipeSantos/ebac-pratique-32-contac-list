@@ -7,7 +7,15 @@ import {
 	SiX,
 	SiXHex,
 } from "@icons-pack/react-simple-icons";
-import { BotaoAlterarDadosStyle, ColorInputStyle, InputStyle, LabelStyle, SocialsContainer } from "./styles";
+import {
+	BotaoAlterarDadosStyle,
+	ColorInputStyle,
+	FormContainer,
+	InputStyle,
+	LabelStyle,
+	SocialsContainer,
+} from "./styles";
+import { useNavigate } from "react-router-dom";
 
 interface EditarContatoFormFields extends HTMLFormControlsCollection {
 	nome: HTMLInputElement;
@@ -49,6 +57,8 @@ export default function Form({ contato, handlingSubmit }: Props) {
 	const [cor, setCor] = useState(contato.color);
 	const [socials, setSocials] = useState(contato.socials);
 
+	const navigate = useNavigate();
+
 	const handleFormSubmit = (event: React.FormEvent<EditarContatoElementos>) => {
 		event.preventDefault();
 		const { elements } = event.currentTarget;
@@ -78,97 +88,100 @@ export default function Form({ contato, handlingSubmit }: Props) {
 	};
 
 	return (
-		<form onSubmit={handleFormSubmit}>
-			<LabelStyle htmlFor="nome">Nome do contato*:</LabelStyle>
-			<InputStyle
-				type="text"
-				name="nome"
-				value={nome}
-				required
-				onChange={(event) => setNome(event.target.value)}
-			/>
-			<LabelStyle htmlFor="telefone">Telefone*:</LabelStyle>
-			<InputStyle
-				type="text"
-				name="telefone"
-				value={telefone}
-				required
-				onChange={(event) => setTelefone(event.target.value)}
-			/>
-			<LabelStyle htmlFor="email">E-mail*:</LabelStyle>
-			<InputStyle
-				type="text"
-				name="email"
-				value={email}
-				required
-				onChange={(event) => setEmail(event.target.value)}
-			/>
-			<LabelStyle htmlFor="avatar">Url do seu avatar (opcional):</LabelStyle>
-			<InputStyle
-				type="text"
-				name="avatar"
-				value={avatar}
-				onChange={(event) => setAvatar(event.target.value)}
-			/>
-			<LabelStyle htmlFor="cor">Uma cor para o card do contato (opcional):</LabelStyle>
-			<ColorInputStyle
-				type="color"
-				name="cor"
-				value={cor}
-				onChange={(event) => setCor(event.target.value)}
-			/>
-			<LabelStyle htmlFor="">Redes Sociais (opcional)</LabelStyle>
-			<SocialsContainer>
-				<div>
-					<label htmlFor="facebook">
-						<SiFacebook color={SiFacebookHex} />
-					</label>
-					<InputStyle
-						type="text"
-						name="facebook"
-						value={socials.facebook}
-						onChange={(event) =>
-							setSocials({
-								...socials,
-								facebook: event.target.value,
-							})
-						}
-					/>
-				</div>
-				<div>
-					<label htmlFor="instagram">
-						<SiInstagram color={SiInstagramHex} />
-					</label>
-					<InputStyle
-						type="text"
-						name="instagram"
-						value={socials.instagram}
-						onChange={(event) =>
-							setSocials({
-								...socials,
-								instagram: event.target.value,
-							})
-						}
-					/>
-				</div>
-				<div>
-					<label htmlFor="X">
-						<SiX color={SiXHex} />
-					</label>
-					<InputStyle
-						type="text"
-						name="X"
-						value={socials.X}
-						onChange={(event) =>
-							setSocials({
-								...socials,
-								X: event.target.value,
-							})
-						}
-					/>
-				</div>
-			</SocialsContainer>
-			<BotaoAlterarDadosStyle>Alterar dados</BotaoAlterarDadosStyle>
-		</form>
+		<FormContainer>
+			<BotaoAlterarDadosStyle onClick={() => navigate("/")}>Voltar</BotaoAlterarDadosStyle>
+			<form onSubmit={handleFormSubmit}>
+				<LabelStyle htmlFor="nome">Nome do contato*:</LabelStyle>
+				<InputStyle
+					type="text"
+					name="nome"
+					value={nome}
+					required
+					onChange={(event) => setNome(event.target.value)}
+				/>
+				<LabelStyle htmlFor="telefone">Telefone*:</LabelStyle>
+				<InputStyle
+					type="text"
+					name="telefone"
+					value={telefone}
+					required
+					onChange={(event) => setTelefone(event.target.value)}
+				/>
+				<LabelStyle htmlFor="email">E-mail*:</LabelStyle>
+				<InputStyle
+					type="text"
+					name="email"
+					value={email}
+					required
+					onChange={(event) => setEmail(event.target.value)}
+				/>
+				<LabelStyle htmlFor="avatar">Url do seu avatar (opcional):</LabelStyle>
+				<InputStyle
+					type="text"
+					name="avatar"
+					value={avatar}
+					onChange={(event) => setAvatar(event.target.value)}
+				/>
+				<LabelStyle htmlFor="cor">Uma cor para o card do contato (opcional):</LabelStyle>
+				<ColorInputStyle
+					type="color"
+					name="cor"
+					value={cor}
+					onChange={(event) => setCor(event.target.value)}
+				/>
+				<LabelStyle htmlFor="">Redes Sociais (opcional)</LabelStyle>
+				<SocialsContainer>
+					<div>
+						<label htmlFor="facebook">
+							<SiFacebook color={SiFacebookHex} />
+						</label>
+						<InputStyle
+							type="text"
+							name="facebook"
+							value={socials.facebook}
+							onChange={(event) =>
+								setSocials({
+									...socials,
+									facebook: event.target.value,
+								})
+							}
+						/>
+					</div>
+					<div>
+						<label htmlFor="instagram">
+							<SiInstagram color={SiInstagramHex} />
+						</label>
+						<InputStyle
+							type="text"
+							name="instagram"
+							value={socials.instagram}
+							onChange={(event) =>
+								setSocials({
+									...socials,
+									instagram: event.target.value,
+								})
+							}
+						/>
+					</div>
+					<div>
+						<label htmlFor="X">
+							<SiX color={SiXHex} />
+						</label>
+						<InputStyle
+							type="text"
+							name="X"
+							value={socials.X}
+							onChange={(event) =>
+								setSocials({
+									...socials,
+									X: event.target.value,
+								})
+							}
+						/>
+					</div>
+				</SocialsContainer>
+				<BotaoAlterarDadosStyle>Alterar dados</BotaoAlterarDadosStyle>
+			</form>
+		</FormContainer>
 	);
 }

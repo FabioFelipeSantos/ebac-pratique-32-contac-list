@@ -36,6 +36,7 @@ export const InputStyle = styled.input`
 
 export const ColorInputStyle = styled(InputStyle)`
 	width: 35%;
+	height: 40px;
 	padding: 0;
 	/* border-radius: 0; */
 
@@ -89,5 +90,15 @@ export const BotaoAlterarDadosStyle = styled.button`
 	&:active {
 		transform: scale(1.1);
 		filter: brightness(106%);
+	}
+`;
+
+export const FormContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	button {
+		margin: 18px 0 0;
 	}
 `;

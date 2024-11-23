@@ -4,6 +4,7 @@ import {
 	BotaoAdicionarContatoStyle,
 	FiltroESeletorContainer,
 	MainPageStyle,
+	SelectContainer,
 	SpinStyle,
 	TituloContatosContainer,
 } from "./styles";
@@ -12,24 +13,23 @@ import {
 	Contact,
 	fetchContacts,
 	selectAllContacts,
+	selectSeletoresDisponiveis,
 	selectStatusOfFetching,
 } from "../../store/reducers/contactListSlice";
 import { Titulo } from "../../styles/globalStyle";
 import Filtro from "../../components/Filtro/Filtro";
 import { useNavigate } from "react-router-dom";
 
-let seletores: string[] = [];
-
 export default function MainPage() {
 	const navigate = useNavigate();
 
 	const [filtro, setFiltro] = useState("todos");
 	const [filtroDigitado, setFiltroDigitado] = useState("");
-	const [seletores, setSeletores] = useState<string[]>([]);
 
 	const dispatch = useAppDispatch();
 	const contactList: Contact[] = useAppSelector(selectAllContacts);
 	const statusDoFetching: string = useAppSelector(selectStatusOfFetching);
+	const seletores = useAppSelector(selectSeletoresDisponiveis);
 
 	let listaFiltrada;
 	if (filtro === "todos") {
@@ -68,19 +68,23 @@ export default function MainPage() {
 					handleChangingFiltro={setFiltroDigitado}
 				/>
 
-				<select
-					name=""
-					id=""
-					onChange={(event) => setFiltro(event.target.value)}>
-					<option
-						value="todos"
-						selected>
-						Escolha um filtro
-					</option>
-					{seletores.map((seletor) => (
-						<option value={seletor.toLowerCase()}>{seletor}</option>
-					))}
-				</select>
+				<SelectContainer htmlFor="seletor">
+					<p>Filtre pela letra inicial</p>
+					<select
+						name="seletor"
+						id="seletor"
+						onChange={(event) => setFiltro(event.target.value)}
+						defaultValue="todos">
+						<option value="todos">Escolha um filtro</option>
+						{seletores.map((seletor) => (
+							<option
+								key={seletor}
+								value={seletor}>
+								{seletor.toUpperCase()}
+							</option>
+						))}
+					</select>
+				</SelectContainer>
 			</FiltroESeletorContainer>
 
 			{statusDoFetching === "pending" ? (

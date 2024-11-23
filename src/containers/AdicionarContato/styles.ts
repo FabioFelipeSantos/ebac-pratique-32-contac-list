@@ -8,6 +8,7 @@ export const ContainerAdicionarContato = styled(Container)`
 	overflow-y: scroll;
 
 	form {
+		width: 100%;
 		margin-top: 24px;
 		display: flex;
 		flex-direction: column;

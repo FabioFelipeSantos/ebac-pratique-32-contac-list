@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import { breakPoints } from "../../utils/variables";
 
-type Props = {
-	fromMain: boolean;
-};
-
-export const FiltroStyle = styled.div<Props>`
+export const FiltroStyle = styled.div`
 	width: 100%;
 	min-width: 350px;
 	max-width: 700px;
@@ -17,7 +12,7 @@ export const FiltroStyle = styled.div<Props>`
 	justify-content: center;
 	align-items: flex-start;
 	background-color: #0003;
-	position: ${(props) => (props.fromMain ? "static" : "sticky")};
+	position: sticky;
 	top: 0px;
 	z-index: 2;
 
@@ -30,13 +25,5 @@ export const FiltroStyle = styled.div<Props>`
 		font-size: 16px;
 		border-radius: 8px;
 		border: 1px solid #0005;
-	}
-
-	@media screen and (min-width: ${breakPoints.md}) {
-		display: ${(props) => (props.fromMain ? "none" : "flex")};
-	}
-
-	@media screen and (min-width: ${breakPoints.lg}) {
-		display: ${(props) => (props.fromMain ? "none" : "flex")};
 	}
 `;

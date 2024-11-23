@@ -103,25 +103,34 @@ export const BotoesEspeciaisContainer = styled.div`
 	.lucide-trash2 {
 		stroke: red;
 		margin-right: 8px;
+		border-radius: 50%;
+		transition: all 0.15s ease-out;
 
 		&:hover {
 			cursor: pointer;
+			transform: scale(1.1);
+			background-color: #f002;
+			box-shadow: 0 0 15px 5px #f002;
 		}
 
 		&:active {
-			transform: scale(1.1);
+			transform: scale(1.2);
 		}
 	}
 
 	.lucide-square-pen {
 		stroke: blue;
+		transition: all 0.15s ease-out;
 
 		&:hover {
 			cursor: pointer;
+			transform: scale(1.1);
+			background-color: #00f2;
+			box-shadow: 0 0 15px 5px #00f2;
 		}
 
 		&:active {
-			transform: scale(1.1);
+			transform: scale(1.2);
 		}
 	}
 
