@@ -7,8 +7,10 @@ type Props = {
 
 export const FiltroStyle = styled.div<Props>`
 	width: 100%;
+	min-width: 350px;
+	max-width: 700px;
 	margin-bottom: 24px;
-	padding: 36px 12px;
+	padding: 18px 12px;
 	font-size: 18px;
 	display: flex;
 	flex-direction: column;

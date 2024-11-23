@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Container, Titulo } from "../../styles/globalStyle";
 import { variables } from "../../utils/variables";
 
-export const ContainerEditarContato = styled(Container)`
+export const ContainerAdicionarContato = styled(Container)`
 	height: calc(100vh - ${variables.footerHeight});
 	padding-top: 32px;
 	overflow-y: scroll;
@@ -16,6 +16,6 @@ export const ContainerEditarContato = styled(Container)`
 	}
 `;
 
-export const TituloDaEdicao = styled(Titulo)`
+export const TituloDaAdicao = styled(Titulo)`
 	text-align: center;
 `;

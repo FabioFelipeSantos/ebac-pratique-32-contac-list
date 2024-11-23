@@ -1,7 +1,9 @@
-import { createSlice, createEntityAdapter, EntityState } from "@reduxjs/toolkit";
+import { createSlice, createEntityAdapter, EntityState, PayloadAction } from "@reduxjs/toolkit";
+import {} from "react-redux";
 import createFakePerson from "../../utils/createFakePersons";
 import { createAppAsyncThunk } from "../hooks";
 import { RootState } from "../store";
+import { faker } from "@faker-js/faker";
 
 export interface Contact {
 	id: string;
@@ -9,13 +11,13 @@ export interface Contact {
 	email: string;
 	phone: string;
 	date: string;
-	socials?: { instagram: string; facebook: string; X: string };
-	avatar?: string;
-	color?: string;
+	socials: { instagram: string; facebook: string; X: string };
+	avatar: string;
+	color: string;
 }
 
 export const fetchContacts = createAppAsyncThunk("contacts/fetchContacts", async () => {
-	const response = await createFakePerson(20);
+	const response = await createFakePerson(10);
 	return response;
 });
 
@@ -34,12 +36,36 @@ const initialState: ContactListState = contactAdapter.getInitialState({
 const contactListSlice = createSlice({
 	name: "contactList",
 	initialState,
-	reducers: {},
+	reducers: {
+		adicionarContato: (state, action: PayloadAction<Omit<Contact, "date" | "id">>) => {
+			const id = faker.string.uuid();
+			const date = new Date().toISOString();
+
+			const newContact = {
+				id,
+				date,
+				...action.payload,
+			};
+
+			contactAdapter.addOne(state, newContact);
+		},
+		editarContato: (state, action: PayloadAction<Omit<Contact, "date">>) => {
+			const { id, fullName, phone, email, avatar, color, socials } = action.payload;
+			contactAdapter.updateOne(state, {
+				id,
+				changes: { fullName, phone, email, avatar, color, socials },
+			});
+		},
+		removerContato: (state, action: PayloadAction<string>) => {
+			contactAdapter.removeOne(state, action.payload);
+		},
+	},
 	selectors: {
 		selectStatusOfFetching: (state) => state.status,
 	},
 	extraReducers: (builder) => {
 		builder
+			.addCase(adicionarContato)
 			.addCase(fetchContacts.pending, (state, _) => {
 				state.status = "pending";
 			})
@@ -51,11 +77,10 @@ const contactListSlice = createSlice({
 });
 
 export default contactListSlice.reducer;
-export const {} = contactListSlice.actions;
+export const { adicionarContato, editarContato, removerContato } = contactListSlice.actions;
 export const {
 	selectAll: selectAllContacts,
 	selectById: selectContactById,
 	selectIds: selectContactsIds,
-	selectTotal: selectTotalOfContacts,
 } = contactAdapter.getSelectors((state: RootState) => state.contactList);
 export const { selectStatusOfFetching } = contactListSlice.selectors;

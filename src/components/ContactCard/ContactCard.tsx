@@ -1,4 +1,4 @@
-import { Contact } from "../../store/reducers/contactListSlice";
+import { Contact, removerContato } from "../../store/reducers/contactListSlice";
 import { MailPlus, PenBox, Phone, StarIcon, Trash2 } from "lucide-react";
 import Social from "../Social/Social";
 import {
@@ -14,8 +14,23 @@ import {
 	BotoesEspeciaisContainer,
 } from "./styles";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
 
 export default function ContactCard({ id, color, avatar, fullName, phone, email, socials }: Contact) {
+	const dispatch = useAppDispatch();
+
+	function haveAnySocial() {
+		const socialsPassed = [];
+
+		for (const [key, value] of Object.entries(socials)) {
+			if (value !== "") {
+				socialsPassed.push({ key, value });
+			}
+		}
+
+		return socialsPassed;
+	}
+
 	return (
 		<CardStyle>
 			<CardHeader color={color}>
@@ -34,7 +49,10 @@ export default function ContactCard({ id, color, avatar, fullName, phone, email,
 
 			<CardContatoInfo>
 				<BotoesEspeciaisContainer>
-					<Trash2 size={22} />
+					<Trash2
+						size={22}
+						onClick={() => dispatch(removerContato(id))}
+					/>
 					<Link to={`/editar/${id}`}>
 						<PenBox size={22} />
 					</Link>
@@ -60,15 +78,15 @@ export default function ContactCard({ id, color, avatar, fullName, phone, email,
 				</InfoContainerStyle>
 			</CardContatoInfo>
 
-			{socials && (
+			{haveAnySocial().length > 0 && (
 				<SocialContainerStyle>
 					<h3>Redes Sociais</h3>
 					<SocialListStyle>
-						{Object.entries(socials).map((social) => (
-							<li key={social[1]}>
+						{haveAnySocial().map((social) => (
+							<li key={social.key}>
 								<Social
-									social={social[0]}
-									link={social[1]}
+									social={social.key}
+									link={social.value}
 								/>
 							</li>
 						))}

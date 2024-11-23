@@ -1,64 +1,30 @@
-import {
-	Contact,
-	fetchContacts,
-	selectAllContacts,
-	selectStatusOfFetching,
-} from "../../store/reducers/contactListSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import {
-	BotaoAdicionarContatoStyle,
-	ListaDeContatosStyle,
-	SpinStyle,
-	TituloContatosContainer,
-} from "./styles";
-import Filtro from "../../components/Filtro/Filtro";
+import { InformacaoListaApresentada, ListaDeContatosStyle } from "./styles";
 import ContactCard from "../../components/ContactCard/ContactCard";
-import { Titulo } from "../../styles/globalStyle";
-import { useEffect } from "react";
+import { Contact } from "../../store/reducers/contactListSlice";
 
-export default function ListaDeContatos() {
-	const dispatch = useAppDispatch();
-	const contactList: Contact[] = useAppSelector(selectAllContacts);
-	const statusDoFetching: string = useAppSelector(selectStatusOfFetching);
+type Props = {
+	listaDeContatos: Contact[];
+};
 
-	useEffect(() => {
-		dispatch(fetchContacts());
-	}, [dispatch]);
-
+export default function ListaDeContatos({ listaDeContatos }: Props) {
 	return (
 		<ListaDeContatosStyle>
-			<TituloContatosContainer>
-				<Titulo as="h1">Lista de Contatos</Titulo>
-				<BotaoAdicionarContatoStyle type="button">Adicionar Contato</BotaoAdicionarContatoStyle>
-			</TituloContatosContainer>
-
-			<Filtro
-				fromMain
-				label="Filtre por uma letra ou pelo menos parte do nome:"
-			/>
-
-			{statusDoFetching === "pending" ? (
-				<>
-					<h1>Carregando seus contatos...</h1>
-					<SpinStyle></SpinStyle>
-				</>
-			) : (
-				<ul>
-					{contactList.map((person) => (
-						<ContactCard
-							key={person.id}
-							id={person.id}
-							fullName={person.fullName}
-							date={person.date}
-							email={person.email}
-							phone={person.phone}
-							avatar={person.avatar}
-							color={person.color}
-							socials={person.socials}
-						/>
-					))}
-				</ul>
-			)}
+			<InformacaoListaApresentada>
+				Total de contatos: {listaDeContatos.length}
+			</InformacaoListaApresentada>
+			{listaDeContatos.map((person) => (
+				<ContactCard
+					key={person.id}
+					id={person.id}
+					fullName={person.fullName}
+					date={person.date}
+					email={person.email}
+					phone={person.phone}
+					avatar={person.avatar}
+					color={person.color}
+					socials={person.socials}
+				/>
+			))}
 		</ListaDeContatosStyle>
 	);
 }

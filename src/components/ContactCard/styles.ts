@@ -10,7 +10,7 @@ export const CardStyle = styled.div`
 	max-width: 600px;
 	width: 100%;
 	display: flex;
-	margin: 32px auto;
+	margin: 22px auto;
 	box-shadow: 0 5px 12px -8px #000;
 	flex-direction: column;
 	align-items: center;

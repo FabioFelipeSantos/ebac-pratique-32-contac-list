@@ -25,6 +25,7 @@ import {
 } from "./styles.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EditarContato from "./containers/EditarContato/EditarContato.tsx";
+import AdicionarContato from "./containers/AdicionarContato/AdicionarContato.tsx";
 
 const date = new Date();
 
@@ -32,6 +33,10 @@ const rotas = createBrowserRouter([
 	{
 		path: "/",
 		element: <MainPage />,
+	},
+	{
+		path: "/adicionar",
+		element: <AdicionarContato />,
 	},
 	{
 		path: "/editar/:contactId",
