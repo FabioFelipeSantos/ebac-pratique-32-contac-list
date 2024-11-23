@@ -64,11 +64,9 @@ const contactListSlice = createSlice({
 				changes: { fullName, phone, email, avatar, color, socials },
 			};
 
-			console.log("Retorno da função", excludingOnlyOneSelector(state, id));
 			state.seletoresDisponiveis = excludingOnlyOneSelector(state, id);
 
 			contactAdapter.updateOne(state, contatoEditado);
-			state.ids.forEach((id) => console.log(state.entities[id].fullName));
 
 			state.seletoresDisponiveis = handleFindingAvailableSelectors({
 				fullName: contatoEditado.changes.fullName,
